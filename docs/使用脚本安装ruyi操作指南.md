@@ -1,4 +1,4 @@
-#  oh-my-ruyi ruyi install.sh 利用脚本安装升级ruyi
+#  使用脚本安装ruyi的说明和使用指南
 ---
 ## 操作环境
 - 操作系统：Ubuntu Linux x86_64
@@ -7,11 +7,11 @@
 
 ## 脚本核心能力
 1. 本机已存在ruyi时，执行**升级**逻辑
-2. 卸载ruyi之后，执行**全新安装**逻辑
+2. 本机未存在ruyi时，执行**全新安装**逻辑
 
 ## 操作步骤与结果
 
-### 场景一：已有ruyi环境，脚本升级测试
+### 场景一：已有ruyi环境，利用脚本升级ruyi
 
 1. 查看本机原有ruyi版本，记录旧版本；
 2. 将脚本下载至本地：
@@ -30,14 +30,14 @@ sh ruyi-install.sh
 
 6.执行`ruyi update`，包索引更新正常，基础功能无异常。
 
-### 场景二：卸载ruyi后，脚本全新安装测试
-> 注意：本机旧版ruyi安装在系统目录 `/usr/local/bin`，普通用户直接卸载会触发 `PermissionError: Permission denied` 权限报错
+### 场景二：本机不存在ruyi环境，利用脚本安装ruyi
 
-1.使用sudo执行ruyi本体卸载：
+1.验证本机是否存在ruyi环境，输入：`which ruyi`，无输出，确认ruyi环境不存在；
+
+2.将脚本下载到本地：
 ```bash
-sudo ruyi self uninstall -y
+curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/ruyisdk-test/oh-my-ruyi/master/ruyi-install.sh -o ruyi-install.sh
 ```
-2.验证卸载结果：`which ruyi`，无输出，确认ruyi程序已移除；
 
 3.使用同一脚本执行全新安装：
 ```bash
